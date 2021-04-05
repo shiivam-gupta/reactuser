@@ -145,7 +145,8 @@ const Signup = () => {
             return false;
         } else {
             const getRegisteredData =  await axios.get('http://localhost:3002/admin?email='+data.email);
-            if(getRegisteredData.data){
+            console.log(getRegisteredData.data);
+            if(getRegisteredData.data.length > 0){
                 setSignUpCondition({ showMessage: true, type:"error",message:data.email+ " email already taken." });
                 return false;
             }
