@@ -5,40 +5,40 @@ const Pagination = (data) => {
     const { pageLimit, totalPost, navigatePage } = data;
     const [counter, setCounter] = useState(1)
     console.log('val====' + totalPost);
-    const totalPageBtn = Math.ceil(totalPost / pageLimit)
-    // const [showPreviousBtn,setShowPreviousBtn] = useState(true)
-    // const [showNextBtn,setShowNextBtn] = useState(false)
+    const [totalPageBtn, setTotalPageBtn] = useState(Math.ceil(totalPost / pageLimit))
+    const [showPreviousBtn, setShowPreviousBtn] = useState(true)
+    const [showNextBtn, setShowNextBtn] = useState(false)
 
     const managePaging = (button) => {
         if (button === "prev") {
             if (counter == 1) {
                 setCounter(1);
-                // setShowPreviousBtn(true);
+                setShowPreviousBtn(true);
             } else {
 
                 if (counter == 2) {
-                    // setShowPreviousBtn(true);
+                    setShowPreviousBtn(true);
                 } else {
-                    // setShowPreviousBtn(false);
+                    setShowPreviousBtn(false);
                 }
                 setCounter(counter - 1);
             }
-            // setShowNextBtn(false);
+            setShowNextBtn(false);
 
 
         } else if (button === "next") {
             if (counter == totalPageBtn) {
                 setCounter(counter);
-                // setShowNextBtn(true);
+                setShowNextBtn(true);
             } else {
                 if (counter == totalPageBtn - 1) {
-                    // setShowNextBtn(true);
+                    setShowNextBtn(true);
                 } else {
-                    // setShowNextBtn(false);
+                    setShowNextBtn(false);
                 }
                 setCounter(counter + 1);
             }
-            // setShowPreviousBtn(false);
+            setShowPreviousBtn(false);
 
         }
 
@@ -46,7 +46,6 @@ const Pagination = (data) => {
     useEffect(() => {
         const result = counter * pageLimit;
         navigatePage((parseInt(result) - parseInt(pageLimit)), result);
-        debugger
         console.log("valueeee====" + totalPost);
     }, [counter])
 
@@ -58,9 +57,7 @@ const Pagination = (data) => {
                     <li class="page-item"><a class="page-link" onClick={e => { managePaging("prev") }}>Previous</a></li>
                     {
                         new Array(totalPageBtn).fill("").map((pageBtn, index) => (
-                            <li class={`page-item  ${index == counter - 1 ? "active" : ""}`}>
-                                <a class="page-link" onClick={(e) => setCounter(index + 1)}>{index + 1}</a>
-                            </li>
+                            <li class={`page-item  ${index == counter - 1 ? "active" : ""}`}><a class="page-link" onClick={(e) => setCounter(index + 1)}>{index + 1}</a></li>
                         ))
                     }
                     <li class="page-item"><a class="page-link" onClick={e => { managePaging("next") }}>Next</a></li>

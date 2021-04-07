@@ -28,7 +28,7 @@ function App() {
       <Router>
         {/* <Navbar token={loggedIn}></Navbar> */}
         <Switch>
-         
+
           <PrivateRoute exact path="/" component={Home}></PrivateRoute>
           {/* <Route exact path="/">
             <Navbar></Navbar>

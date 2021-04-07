@@ -6,7 +6,7 @@ const Logout = () => {
     const history = useHistory([]);
     localStorage.removeItem('token');
     history.push('login')
-    return(<div></div>);
+    return (<div></div>);
 }
 
-export default  Logout;
+export default Logout;
