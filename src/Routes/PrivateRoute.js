@@ -1,10 +1,10 @@
-import { React,useState } from "react";
-import { Route,Redirect } from "react-router-dom";
+import { React } from "react";
+import { Route, Redirect } from "react-router-dom";
+import Navbar from "../Layouts/Navbar";
 
-const PrivateRoute = ({component : Component, ...rest}) => {
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
-    console.log(loggedIn);
-    return loggedIn ? (<Route {...rest} render={(props) => <Component {...rest} {...props} />}/>) : (<Redirect to="/login"/>);
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    const token = localStorage.getItem("token");
+    return token ? (<Route {...rest} render={(props) => <><Navbar /><Component {...rest} {...props} /></>} />) : (<Redirect to="/login" />);
 
 }
 
