@@ -29,7 +29,11 @@ function App() {
         {/* <Navbar token={loggedIn}></Navbar> */}
         <Switch>
          
-          <PrivateRoute exact path="/" component={Home}></PrivateRoute>
+          {/* <PrivateRoute exact path="/" component={Home}></PrivateRoute> */}
+          <Route exact path="/">
+            <Navbar></Navbar>
+            <Home></Home>
+          </Route>
           <PrivateRoute exact path="/about-us" component={Aboutus}></PrivateRoute>
           <PrivateRoute exact path="/contact-us" component={Contactus}></PrivateRoute>
           <PrivateRoute exact path="/users" component={Users}></PrivateRoute>
